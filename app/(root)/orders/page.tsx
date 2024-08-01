@@ -5,7 +5,7 @@ import { SearchParamProps } from '@/types'
 import { IOrderItem } from '../../../lib/database/models/order.model'
 
 const Orders = async ({ searchParams }: SearchParamProps) => {
-  const eventId = (searchParams?.eventId as string) || ''
+  const eventId =  "123451111111111111111111"     //(searchParams?.eventId as string) || ''
   const searchText = (searchParams?.query as string) || ''
 
   const orders = await getOrdersByEvent({ eventId, searchString: searchText })
