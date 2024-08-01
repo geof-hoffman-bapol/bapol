@@ -1,3 +1,11 @@
+import React from 'react'
+
+const route = () => {
+  return (null )
+}
+
+export default route
+
 /*
 import stripe from 'stripe'
 import { NextResponse } from 'next/server'
