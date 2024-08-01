@@ -35,4 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-app/api/webhook/stripe/*
+app/api/webhook/stripe/route.ts
+app\api\webhook\stripe\route.ts
