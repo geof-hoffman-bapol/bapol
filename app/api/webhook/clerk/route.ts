@@ -52,7 +52,9 @@ export async function POST(req: Request) {
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
- 
+      console.log(`File:webhook/clerk/route.ts:55`)
+      console.log(`id:${id}`)
+      console.log(`eventType:${eventType}`)
   if(eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
@@ -62,10 +64,11 @@ export async function POST(req: Request) {
       lastName: last_name!,
       username: username!,
       email: email_addresses[0].email_address,
-      photo: image_url,
+      photo: image_url
     }
-
-
+    console.log(`File:webhook/clerk/route.ts:69`)
+    console.log(`id:${id}`)
+    console.log(`user: ${user}`    )
 
     const newUser = await createUser(user);
 

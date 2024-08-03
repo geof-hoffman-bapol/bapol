@@ -12,7 +12,7 @@ import { CreateUserParams, UpdateUserParams } from '@/types'
 
 export async function createUser(user: CreateUserParams) {
   try {
-    await connectToDatabase()
+    await connectToDatabase();
 
     const newUser = await User.create(user)
     return JSON.parse(JSON.stringify(newUser))
@@ -26,7 +26,7 @@ export async function getUserById(userId: string) {
     await connectToDatabase()
 
     const user = await User.findById(userId)
-
+    
     if (!user) throw new Error('User not found')
     return JSON.parse(JSON.stringify(user))
   } catch (error) {

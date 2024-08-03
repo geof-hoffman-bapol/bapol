@@ -1,12 +1,14 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../../components/ui/select';
+import {  Select,  
+          SelectContent,  
+          SelectItem,  
+          SelectTrigger,  
+          SelectValue,} 
+          
+        from '../../components/ui/select';
 import { ICategory } from'../../lib/database/models/category.model';
-import { startTransition, useEffect, useState } from "react"
+
+import { startTransition, useEffect, useState } from "react";
+
 import {
   AlertDialog,
   AlertDialogAction,

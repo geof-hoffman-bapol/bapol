@@ -88,7 +88,15 @@ export function removeKeysFromQuery({ params, keysToRemove }: RemoveUrlQueryPara
 }
 
 export const handleError = (error: unknown) => {
-  console.log("yup same error:/")
   console.error(error)
-  //throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
+  if (typeof error === 'string') {
+    throw new Error(error);
+  } else {
+    try {
+      throw new Error(JSON.stringify(error));
+    } catch (e) {
+      // Handle circular reference case
+      throw new Error('An error occurred, and it could not be stringified.');
+    }
+  }
 }

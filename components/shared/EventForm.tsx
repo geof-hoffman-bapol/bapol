@@ -32,9 +32,9 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([])
   const initialValues = event && type === 'Update' 
     ? { 
-      ...event, 
-      startDateTime: new Date(event.startDateTime), 
-      endDateTime: new Date(event.endDateTime) 
+      ...event/*, 
+     startDateTime: new Date(event.startDateTime), 
+    endDateTime: new Date(event.endDateTime)*/ 
     }
     : eventDefaultValues;
   const router = useRouter();
@@ -61,6 +61,8 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 
     if(type === 'Create') {
       try {
+        const valueStringify = JSON.stringify(values, null, 2)
+        console.log(`values: ${valueStringify}`);
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
           userId,
