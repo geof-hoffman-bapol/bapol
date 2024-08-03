@@ -1,31 +1,6 @@
-import { 
-    clerkMiddleware, 
-    createRouteMatcher 
-} from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
- // https://clerk.com/docs/references/nextjs/clerk-middleware 
- // auth().protect() method
- // @28 minutes https://www.youtube.com/watch?v=zgGhzuBZOQg&t=1680s
- const isProtectedRoute = createRouteMatcher([
-    '/dashboard(.*)',
-    '/forum(.*)',
-  ]);
-
-
-  export default clerkMiddleware((auth, req) => {
-    if (isProtectedRoute(req)) auth().protect();
-  });
-
-  /*   auth().userId method
-  export default clerkMiddleware((auth, req) => {
-  if (!auth().userId && isProtectedRoute(req)) {
-
-    // Add custom logic to run before redirecting
-
-    return auth().redirectToSignIn();
-  }
-});
-*/
+export default clerkMiddleware();
 
 export const config = {
   matcher: [

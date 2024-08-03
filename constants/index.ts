@@ -12,7 +12,7 @@ export const headerLinks = [
       route: '/profile',
     },
   ]
-  
+  /*
   export const eventDefaultValues = {
     title: '',
     description: '',
@@ -25,4 +25,16 @@ export const headerLinks = [
     isFree: false,
     url: '',
   }
-  
+  */
+  export const eventDefaultValues = {
+    title: 'sample event title',
+    description: 'sample event',
+    location: 'Online',
+    imageUrl: '',
+    startDateTime: new Date(),
+    endDateTime: new Date(),
+    categoryId: '0',
+    price: '',
+    isFree: true,
+    url: 'http://sample.com',
+  }

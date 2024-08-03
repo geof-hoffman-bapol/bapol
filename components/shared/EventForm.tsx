@@ -15,12 +15,11 @@ import { useState } from "react"
 import Image from "next/image"
 import DatePicker from "react-datepicker";
 import { useUploadThing } from '../../lib/actions/uploadthing';
-import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox"
 import { useRouter } from "next/navigation"
 import { createEvent, updateEvent } from '../../lib/actions/event.actions';
 import { IEvent } from '../../lib/database/models/event.model'
-
+import "react-datepicker/dist/react-datepicker.css";
 
 type EventFormProps = {
   userId: string
@@ -49,7 +48,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
  
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
     let uploadedImageUrl = values.imageUrl;
-
+    console.log(`(eventForm 52) uploadImageURL: ${uploadedImageUrl}`);
     if(files.length > 0) {
       const uploadedImages = await startUpload(files)
 
