@@ -44,7 +44,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
       </section> 
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Coming soon! Some features on this site are still under development. Sign up now for a notification email once the Events calendar, Messaging and comments go live </h2>
+        <h2 className="h2-bold">Some features on this site are still under development. Login and sign up now for a notification email once the Events calendar, Messaging and comments go live </h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
