@@ -4,7 +4,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 const f = createUploadthing();
 
 
-const auth = (req: Request) => ({ id: "123456789123456789123456" }); // Fake auth function
+const auth = (req: Request) => ({ id: "12345678fakeID789123456" }); // Fake auth function
  
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
