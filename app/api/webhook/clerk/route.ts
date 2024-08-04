@@ -64,7 +64,7 @@ export async function POST(req: Request) {
   if(eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
     //const randomId =uuidv4();
-    console.log(` random and ID:${randomId}, ${id}`)
+  // console.log(` random and ID:${randomId}, ${id}`)
     const user = {
       _id: newId, 
       clerkId: id,
