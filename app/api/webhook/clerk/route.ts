@@ -3,8 +3,12 @@ import { headers } from 'next/headers'
 import { WebhookEvent, clerkClient } from '@clerk/nextjs/server'
 import { createUser, deleteUser, updateUser } from '../../../../lib/actions/user.actions'
 import { NextResponse } from 'next/server'
-import { v4 as uuidv4 } from 'uuid';
- 
+//import { v4 as uuidv4 } from 'uuid';
+
+import mongoose from 'mongoose';
+
+const { Types } = mongoose;
+
 export async function POST(req: Request) {
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -51,15 +55,18 @@ export async function POST(req: Request) {
   }
  
   // Get the ID and type
-  const { id } = evt.data;
+
   const eventType = evt.type;
-     
+
+ // Generate a new ObjectId
+    const newId = new Types.ObjectId();
+  console.log(newId)
   if(eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
-    const randomId =uuidv4();
+    //const randomId =uuidv4();
     console.log(` random and ID:${randomId}, ${id}`)
     const user = {
-      _id: id, 
+      _id: newId, 
       clerkId: id,
       firstName: first_name!,
       lastName: last_name!,
@@ -67,8 +74,8 @@ export async function POST(req: Request) {
       email: email_addresses[0].email_address,
       photo: image_url
     }
-    console.log(`File:webhook/clerk/route.ts:69`)
-    console.log(`id:${id}`)
+   //console.log(`File:webhook/clerk/route.ts:69`)
+    //console.log(`id:${id}`)
     console.log(`user: ${JSON.stringify(user)}`    )
 
     const newUser  = await createUser(user);
