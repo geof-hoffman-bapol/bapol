@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import { WebhookEvent, clerkClient } from '@clerk/nextjs/server'
 import { createUser, deleteUser, updateUser } from '../../../../lib/actions/user.actions'
 import { NextResponse } from 'next/server'
+import { v4 as uuidv4 } from 'uuid';
  
 export async function POST(req: Request) {
  
@@ -52,13 +53,13 @@ export async function POST(req: Request) {
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
-      console.log(`File:webhook/clerk/route.ts:55`)
-      console.log(`id:${id}`)
-      console.log(`eventType:${eventType}`)
+     
   if(eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
-
+    const randomId =uuidv4();
+    console.log(` random and ID:${randomId}, ${id}`)
     const user = {
+      _id: id, 
       clerkId: id,
       firstName: first_name!,
       lastName: last_name!,
