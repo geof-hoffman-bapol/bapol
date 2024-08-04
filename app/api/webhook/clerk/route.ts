@@ -68,7 +68,7 @@ export async function POST(req: Request) {
     }
     console.log(`File:webhook/clerk/route.ts:69`)
     console.log(`id:${id}`)
-    console.log(`user: ${user}`    )
+    console.log(`user: ${JSON.stringify(user)}`    )
 
     const newUser  = await createUser(user);
 
