@@ -48,7 +48,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
  
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
     let uploadedImageUrl = values.imageUrl;
-    console.log(`(eventForm 52) uploadImageURL: ${uploadedImageUrl}`);
+   
     if(files.length > 0) {
       const uploadedImages = await startUpload(files)
 
@@ -61,14 +61,16 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 
     if(type === 'Create') {
       try {
+        //stringified just for console.log
         const valueStringify = JSON.stringify(values, null, 2)
-        console.log(`values: ${valueStringify}`);
+        console.log(`EventForm values: ${valueStringify}`);
+        
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
           userId,
           path: '/profile'
         })
-
+        console.log(JSON.stringify(`New event object: ${newEvent}`))
         if(newEvent) {
           form.reset();
           router.push(`/events/${newEvent._id}`)

@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Define the User schema with _id as a string
 const UserSchema = new Schema({
-  _id: { type: Schema.Types.ObjectId },
+  _id: {type: String, required: true, unique: true },
   clerkId: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
