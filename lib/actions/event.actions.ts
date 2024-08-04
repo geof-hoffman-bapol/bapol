@@ -7,7 +7,9 @@ import Event from '@/lib/database/models/event.model'
 import User from '@/lib/database/models/user.model'
 import Category from '@/lib/database/models/category.model'
 import { handleError } from '@/lib/utils'
-
+const { v4: uuidv4 } = require('uuid');
+const randomId = uuidv4();
+console.log(randomId);
 import {
   CreateEventParams,
   UpdateEventParams,
@@ -18,7 +20,7 @@ import {
 } from '@/types'
 
 const getCategoryByName = async (name: string) => {
-  
+
   return Category.findOne({ name: { $regex: name, $options: 'i' } })
 }
 
@@ -37,7 +39,7 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
    console.log(`organizer: ${organizer}`)
     if (!organizer) throw new Error('Organizer not found')
   
-      const newEvent = await Event.create({ ...event, category: event.categoryId, organizer: userId })
+      const newEvent = await Event.create({ ...event, _id:randomId, category: event.categoryId, organizer: userId })
     revalidatePath(path)
 
     return JSON.parse(JSON.stringify(newEvent))
