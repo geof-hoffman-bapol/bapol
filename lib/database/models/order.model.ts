@@ -38,11 +38,11 @@ const OrderSchema = new Schema({
     type: String,
   },
   event: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'Event',
   },
   buyer: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'User',
   },
 })

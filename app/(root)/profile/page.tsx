@@ -9,17 +9,31 @@ import Link from 'next/link';
 import React from 'react';
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
+
   const { sessionClaims } = auth();
-  const userId = sessionClaims?.userId as string;
-  console.log(`userId : ${auth()}`);
+  const  userId =  sessionClaims?.sub;
+ console.log(`userid: ${userId}`)
+  if (!userId) return null;
+
+
+
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
 
   const orders = await getOrdersByUser({ userId, page: ordersPage})
+  console.log(
+
+    `orders:${orders}
+    userId:${userId}
+    ${ordersPage}
+    ordersPage:`
+  )
 
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
+  
   const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
-
+  
+      console.log(`${userId}, ${organizedEvents}`)
   return (
     <>
       {/* My Tickets */}
@@ -60,8 +74,13 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-8">
+
+
+  
+
         <Collection 
           data={organizedEvents?.data}
+     
           emptyTitle="No events have been created yet"
           emptyStateSubtext="Go create some now"
           collectionType="Events_Organized"

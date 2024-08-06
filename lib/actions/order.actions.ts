@@ -9,6 +9,8 @@ import Order from '../database/models/order.model';
 import Event from '../database/models/event.model';
 import {ObjectId} from 'mongodb';
 import User from '../database/models/user.model';
+const { v4: uuidv4 } = require('uuid');
+const randomId = uuidv4();
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -50,6 +52,7 @@ export const createOrder = async (order: CreateOrderParams) => {
     
     const newOrder = await Order.create({
       ...order,
+      _id: randomId,
       event: order.eventId,
       buyer: order.buyerId,
     });

@@ -9,7 +9,7 @@ import Category from '@/lib/database/models/category.model'
 import { handleError } from '@/lib/utils'
 const { v4: uuidv4 } = require('uuid');
 const randomId = uuidv4();
-console.log(randomId);
+
 import {
   CreateEventParams,
   UpdateEventParams,
@@ -36,7 +36,9 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
     await connectToDatabase()
 
     const organizer = await User.findById(userId)
-   console.log(`organizer: ${organizer}`)
+   
+    console.log(`organizer: ${organizer}`)
+
     if (!organizer) throw new Error('Organizer not found')
   
       const newEvent = await Event.create({ ...event, _id:randomId, category: event.categoryId, organizer: userId })
