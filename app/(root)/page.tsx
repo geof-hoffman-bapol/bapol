@@ -38,13 +38,13 @@ export default async function Home({ searchParams }: SearchParamProps) {
             alt="hero"
             width={1000}
             height={1000}
-            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh] sm:rounded-md md:rounded-lg lg:rounded-xl "
+            className="2xl-max-h-[40vh] object-contain object-center sm:rounded-md md:rounded-lg lg:rounded-2xl  2xl-rounded-lg"
           />
         </div>
       </section> 
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Some features on this site are still under development. Login and sign up now for a notification email once the Events calendar, Messaging and comments go live </h2>
+        <h2 className="h2-bold">Bapol Events is going live in September. Sign up now for a notification email when Events, Messaging and Comments go live and to receive an invite to the kickoff picnic in mid-September</h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
